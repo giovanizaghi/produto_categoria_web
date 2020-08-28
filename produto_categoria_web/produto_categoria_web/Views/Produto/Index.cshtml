@@ -1,0 +1,59 @@
+﻿@model List<Dominio.Model.Produto>
+@using Newtonsoft.Json;
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Produtos
+                    </div>
+                </div>
+                <div class="card-body">
+                    <button onclick="$('#modalAdicionar').modal();" class="btn btn-primary">Adicionar Produto</button>
+                    @if (Model != null)
+                    {
+                        if (Model.Count > 0)
+                        {
+                            <table class="table table-striped table-hover mt-5">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Descrição</th>
+                                        <th>Preço</th>
+                                        <th>Preço Anterior</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Nome</td>
+                                            <td>@item.Descricao</td>
+                                            <td>@item.Preco</td>
+                                            <td>@item.PrecoAnterior</td>
+                                            <td class="text-right">
+                                                <button class="btn" onclick="modalEditar(@JsonConvert.SerializeObject(item))">Editar</button> |
+                                                <button class="btn" onclick="excluir(@item.Id)">Excluir</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+@Html.Partial("_modalAdicionarProduto")
+@Html.Partial("_modalEditarProduto")
+
+
+<script src="~/js/Produto.js"></script>

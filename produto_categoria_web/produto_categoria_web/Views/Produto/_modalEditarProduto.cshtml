@@ -1,0 +1,51 @@
+﻿<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Adicionar Produto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formProdutoEdicao">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="Nome">Nome</label>
+                            <input type="hidden"  id="Id" name="Id" />
+                            <input type="text" placeholder="Nome" id="NomeEdit" class="form-control" size="20" name="Nome" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="Nome">Descrição</label>
+                            <input type="text" placeholder="Descrição" id="DescricaoEdit" class="form-control" size="50" name="Descricao" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="PrecoAnterior">Preço Anterior</label>
+                            <input type="text" placeholder="Preço Anterior" id="PrecoAnteriorEdit" class="form-control" name="PrecoAnterior" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="Nome">Preço</label>
+                            <input type="text" placeholder="Preço" id="PrecoEdit" class="form-control" name="Preco" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="IdCategoria">Categoria</label>
+
+                            <select id="IdCategoriaEdit" class="form-control" name="IdCategoria">
+                                <option value="">Selecione...</option>
+                                @foreach (var item in ViewBag.Categorias)
+                                {
+                                    <option value="@item.Id">@item.Descricao</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" onclick="editar()">Salvar Produto</button>
+            </div>
+        </div>
+    </div>
+</div>
+
